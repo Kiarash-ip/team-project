@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { validate } from "../helper/functions";
 
 export default function Collaboration() {
   const [data, setData] = useState({
@@ -10,9 +11,16 @@ export default function Collaboration() {
     location: "isfahan",
     description: "",
   });
+  const [errors, setErrors] = useState({
+    fullName: false,
+    phoneNumber: false,
+    age: false,
+    description: false,
+  });
 
   useEffect(() => {
-    console.log(data);
+    setErrors(validate(data));
+    console.log(errors);
   }, [data]);
 
   return (
@@ -41,6 +49,9 @@ export default function Collaboration() {
         <div className="collab__items">
           <label>تلفن همراه</label>
           <input
+            className={
+              errors.phoneNumber ? "input__uncompleted" : "input__completed"
+            }
             value={data.phoneNumber}
             type="tel"
             name="phoneNumber"
