@@ -1,0 +1,157 @@
+.collab {
+  width: 40%;
+  background-color: $color-bg;
+  border-radius: 10px;
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  position: relative;
+  margin: 4rem 0;
+
+  &__logo {
+    position: absolute;
+    width: 3.5rem;
+    height: 5rem;
+    top: 2rem;
+    left: 2rem;
+  }
+
+  &__items {
+    width: 100%;
+  }
+
+  h2 {
+    text-align: right;
+    font-size: 4rem;
+    color: darken($color-secondary, 15%);
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: repeat(3, min-content) 1fr;
+    justify-items: end;
+    gap: 4rem;
+
+    label {
+      display: block;
+      text-align: right;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 7px 5px;
+      font-style: normal;
+      color: darken($color-primary, 10%);
+    }
+
+    input {
+      width: 100%;
+      height: 4.5rem;
+      outline: none;
+      border: 1px solid #777;
+      padding: 1rem;
+      transition: all 0.3s ease;
+      font-size: 1.8rem;
+      color: #333;
+      font-weight: bold;
+      border-radius: 5px;
+
+      &:focus {
+        border: 1px solid $color-primary;
+        background-color: #fff;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+          rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      }
+    }
+
+    select {
+      width: 100%;
+      height: 4.5rem;
+      font-size: 1.8rem;
+      text-align: right;
+      border: 1px solid #777;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      padding: 0 0.5rem;
+
+      &:focus {
+        border: 1px solid $color-primary;
+        background-color: #fff;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+          rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      }
+    }
+  }
+
+  &__textArea {
+    text-align: right;
+    grid-row: 4 / span 1;
+    grid-column: 1 / -1;
+    width: 100%;
+
+    textarea {
+      width: 100%;
+      height: 20rem;
+      margin-left: auto;
+      font-size: 1.8rem;
+      padding: 2rem;
+      border: 1px solid #777;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+
+      &::placeholder {
+        color: #777;
+        text-align: right;
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid $color-primary;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+          rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        background-color: #fff;
+      }
+    }
+  }
+
+  &__buttons {
+    align-self: flex-end;
+
+    .send {
+      padding: 10px 20px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      background-color: #54e346;
+      border: 2px solid #54e346;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #fff;
+        color: #54e346;
+      }
+    }
+
+    .back {
+      @extend .send;
+      background-color: $color-primary;
+      border: 2px solid $color-primary;
+      &:hover {
+        background-color: #fff;
+        color: $color-primary;
+      }
+      margin-right: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: "1300px") {
+  .collab {
+    width: 60%;
+  }
+
+  .collab__form {
+    grid-template-columns: 1fr;
+  }
+}

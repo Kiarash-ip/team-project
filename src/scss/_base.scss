@@ -1,0 +1,17 @@
+$color-primary: #0e3eda;
+$color-secondary: #f473b9;
+$color-secondary-light: #ffbde6;
+$color-dark: #333;
+$color-bg: rgb(247, 247, 247);
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
