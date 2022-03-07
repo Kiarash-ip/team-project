@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const validate = function (data) {
   const errors = {};
 
@@ -26,4 +28,12 @@ export const validate = function (data) {
   }
 
   return errors;
+};
+
+export const notify = (message, type) => {
+  if (type === "success") {
+    toast.success(message);
+  } else {
+    toast.error(message);
+  }
 };
