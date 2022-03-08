@@ -7,6 +7,7 @@ import { BsPhone } from "react-icons/bs";
 import { BsCalendar2Date } from "react-icons/bs";
 import { BsGenderAmbiguous } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { VscPerson } from "react-icons/vsc";
 
 export default function Collaboration() {
   const [data, setData] = useState({
@@ -27,7 +28,6 @@ export default function Collaboration() {
 
   useEffect(() => {
     setErrors(validate(data));
-    console.log(data);
   }, [data]);
 
   const submitHandler = (e) => {
@@ -56,13 +56,16 @@ export default function Collaboration() {
         </div>
         <div className="collab__form-and-buttons-container">
           <form className="collab__form" onSubmit={submitHandler}>
-            <div className="collab__items">
+            <div
+              className={
+                errors.phoneNumber
+                  ? "collab__items input__uncompleted"
+                  : "collab__items"
+              }
+            >
               <input
                 dir="rtl"
                 placeholder="تلفن همراه"
-                className={
-                  errors.phoneNumber ? "input__uncompleted" : "input__completed"
-                }
                 value={data.phoneNumber}
                 type="tel"
                 name="phoneNumber"
@@ -75,12 +78,15 @@ export default function Collaboration() {
               />
               <BsPhone />
             </div>
-            <div className="collab__items">
+            <div
+              className={
+                errors.fullName
+                  ? "collab__items input__uncompleted"
+                  : "collab__items"
+              }
+            >
               <input
                 placeholder="نام و نام خانوادگی"
-                className={
-                  errors.fullName ? "input__uncompleted" : "input__completed"
-                }
                 value={data.fullName}
                 dir="rtl"
                 type="text"
@@ -110,12 +116,15 @@ export default function Collaboration() {
               </select>
               <BsGenderAmbiguous />
             </div>
-            <div className="collab__items">
+            <div
+              className={
+                errors.age
+                  ? "collab__items input__uncompleted"
+                  : "collab__items"
+              }
+            >
               <input
                 placeholder="سن"
-                className={
-                  errors.age ? "input__uncompleted" : "input__completed"
-                }
                 value={data.age}
                 dir="rtl"
                 type="number"
@@ -143,6 +152,7 @@ export default function Collaboration() {
                 <option value="single">مجرد</option>
                 <option value="married">متاهل</option>
               </select>
+              <VscPerson />
             </div>
             <div className="collab__items">
               <select
@@ -161,13 +171,14 @@ export default function Collaboration() {
               </select>
               <HiOutlineLocationMarker />
             </div>
-            <div className="collab__textArea">
+            <div
+              className={
+                errors.description
+                  ? "collab__textArea input__uncompleted"
+                  : "collab__textArea"
+              }
+            >
               <textarea
-                className={
-                  errors.description
-                    ? "textArea__uncompleted"
-                    : "textArea__completed"
-                }
                 value={data.description}
                 dir="rtl"
                 name="description"
