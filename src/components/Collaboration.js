@@ -26,6 +26,13 @@ export default function Collaboration() {
     description: false,
   });
 
+  const [touched, setTouched] = useState({
+    fullName: false,
+    age: false,
+    description: false,
+    phoneNumber: false,
+  });
+
   useEffect(() => {
     setErrors(validate(data));
   }, [data]);
@@ -33,8 +40,20 @@ export default function Collaboration() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (Object.keys(errors).length) {
+      setTouched({
+        fullName: true,
+        age: true,
+        description: true,
+        phoneNumber: true,
+      });
       notify("Fill out the form", "failed");
     } else {
+      setTouched({
+        fullName: false,
+        age: false,
+        description: false,
+        phoneNumber: false,
+      });
       setData({
         fullName: "",
         phoneNumber: "",
@@ -58,7 +77,7 @@ export default function Collaboration() {
           <form className="collab__form" onSubmit={submitHandler}>
             <div
               className={
-                errors.phoneNumber
+                errors.phoneNumber && touched.phoneNumber
                   ? "collab__items input__uncompleted"
                   : "collab__items"
               }
@@ -67,6 +86,12 @@ export default function Collaboration() {
                 dir="rtl"
                 placeholder="تلفن همراه"
                 value={data.phoneNumber}
+                onFocus={(e) =>
+                  setTouched((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: true,
+                  }))
+                }
                 type="tel"
                 name="phoneNumber"
                 onChange={(e) =>
@@ -80,7 +105,7 @@ export default function Collaboration() {
             </div>
             <div
               className={
-                errors.fullName
+                errors.fullName && touched.fullName
                   ? "collab__items input__uncompleted"
                   : "collab__items"
               }
@@ -88,6 +113,12 @@ export default function Collaboration() {
               <input
                 placeholder="نام و نام خانوادگی"
                 value={data.fullName}
+                onFocus={(e) =>
+                  setTouched((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: true,
+                  }))
+                }
                 dir="rtl"
                 type="text"
                 name="fullName"
@@ -118,7 +149,7 @@ export default function Collaboration() {
             </div>
             <div
               className={
-                errors.age
+                errors.age && touched.age
                   ? "collab__items input__uncompleted"
                   : "collab__items"
               }
@@ -126,6 +157,12 @@ export default function Collaboration() {
               <input
                 placeholder="سن"
                 value={data.age}
+                onFocus={(e) =>
+                  setTouched((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: true,
+                  }))
+                }
                 dir="rtl"
                 type="number"
                 name="age"
@@ -173,7 +210,7 @@ export default function Collaboration() {
             </div>
             <div
               className={
-                errors.description
+                errors.description && touched.description
                   ? "collab__textArea input__uncompleted"
                   : "collab__textArea"
               }
@@ -181,6 +218,12 @@ export default function Collaboration() {
               <textarea
                 value={data.description}
                 dir="rtl"
+                onFocus={(e) =>
+                  setTouched((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: true,
+                  }))
+                }
                 name="description"
                 placeholder="توضیحات و سابقه کار"
                 onChange={(e) =>
