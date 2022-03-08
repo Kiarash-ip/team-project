@@ -1,13 +1,21 @@
 .collab {
   width: 40%;
-  background-color: $color-bg;
   border-radius: 10px;
-  padding: 60px 80px;
+  // padding: 60px 80px;
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  // background-color: #fff;
   position: relative;
-  margin: 4rem 0;
+  margin: 0;
+
+  &__form-and-buttons-container {
+    padding: 40px 50px;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
 
   &__logo {
     position: absolute;
@@ -19,46 +27,70 @@
 
   &__items {
     width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #777;
+    background-color: #fff;
+    border-radius: 5px;
+
+    input {
+      flex-grow: 1;
+    }
+
+    svg {
+      font-size: 2.5rem;
+      color: #777;
+      margin: 0 5px;
+    }
   }
 
-  h2 {
-    text-align: right;
-    font-size: 4rem;
-    color: darken($color-secondary, 15%);
+  &__header-container {
+    h2 {
+      text-align: right;
+      font-size: 4rem;
+      color: #fff;
+      padding: 30px 80px;
+      text-align: center;
+    }
   }
 
   &__form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    background: url(../images/20943659.jpg) no-repeat center;
+    background-size: contain;
+    background-color: #fff;
     // grid-template-rows: repeat(3, min-content) 1fr;
     justify-items: end;
+    // padding: 10px 80px;
+
     gap: 4rem;
 
-    label {
-      display: block;
-      text-align: right;
-      font-size: 2rem;
-      font-weight: bold;
-      padding: 7px 5px;
-      font-style: normal;
-      color: darken($color-primary, 10%);
-    }
+    // label {
+    //   display: block;
+    //   text-align: right;
+    //   font-size: 2rem;
+    //   font-weight: bold;
+    //   padding: 7px 5px;
+    //   font-style: normal;
+    //   color: darken($color-primary, 10%);
+    // }
 
     select {
       width: 100%;
       height: 4.5rem;
       font-size: 1.8rem;
-      text-align: right;
-      border: 1px solid #777;
+      border: none;
       border-radius: 5px;
+      text-align: right;
+      outline: none;
       transition: all 0.3s ease;
       padding: 0 0.5rem;
 
       &:focus {
-        border: 1px solid $color-primary;
         background-color: #fff;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-          rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        //   rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
       }
     }
   }
@@ -72,30 +104,32 @@
 
   &__buttons {
     align-self: flex-end;
+    // padding: 40px 80px;
+    background-color: #fff;
 
     .send {
       padding: 10px 20px;
       color: #fff;
       font-size: 2rem;
       font-weight: bold;
-      background-color: #54e346;
-      border: 2px solid #54e346;
+      background-color: rgba(234, 0, 255);
+      border: 2px solid rgba(234, 0, 255);
       border-radius: 10px;
       transition: all 0.2s ease;
 
       &:hover {
         background-color: #fff;
-        color: #54e346;
+        color: rgba(234, 0, 255, 0.5);
       }
     }
 
     .back {
       @extend .send;
-      background-color: $color-primary;
-      border: 2px solid $color-primary;
+      background-color: rgba(47, 0, 255);
+      border: 2px solid rgba(47, 0, 255);
       &:hover {
         background-color: #fff;
-        color: $color-primary;
+        color: rgba(47, 0, 255);
       }
       margin-right: 2rem;
     }
@@ -138,14 +172,14 @@
 
 .textArea__uncompleted {
   @extend .textArea__completed;
-  border-color: rgb(216, 2, 2);
+  // border-color: rgb(216, 2, 2);
 }
 
 .input__completed {
   width: 100%;
   height: 4.5rem;
   outline: none;
-  border: 1px solid #777;
+  border: none;
   padding: 1rem;
   transition: all 0.3s ease;
   font-size: 1.8rem;
@@ -153,15 +187,24 @@
   font-weight: bold;
   border-radius: 5px;
 
+  &::placeholder {
+    font-size: 1.6rem;
+    padding: 0 10px;
+  }
+
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+
   &:focus {
-    border: 1px solid $color-primary;
+    border: none;
     background-color: #fff;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    //   rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   }
 }
 
 .input__uncompleted {
   @extend .input__completed;
-  border-color: rgb(216, 2, 2);
+  border: none;
 }

@@ -6,16 +6,30 @@ body {
   color: $color-dark;
   height: 100%;
   width: 100%;
+
+  #root {
+    height: 100%;
+  }
 }
 
 .container {
-  background: #333 url(../images/clouds.jpg) no-repeat center;
-
+  background: linear-gradient(
+      25deg,
+      rgba(234, 0, 255, 0.4) 50%,
+      rgba(47, 0, 255, 0.4) 50%
+    ),
+    url(../images/clouds.jpg);
+  background-position: center;
   background-size: cover;
   background-attachment: fixed;
   background-blend-mode: hard-light;
-  height: 100%;
-  width: 100%;
+  padding: 0 0 100px 0;
+  height: 90%;
+  width: 90%;
+  position: relative;
+  margin: 3rem auto;
   display: grid;
   place-items: center;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
